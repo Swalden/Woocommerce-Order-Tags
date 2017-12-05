@@ -5,11 +5,11 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       http://example.com
+ * @link       placeholder
  * @since      1.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/partials
+ * @package    Woocommerce_Order_Tags
+ * @subpackage Woocommerce_Order_Tags/admin/partials
  */
 ?>
 

@@ -3,11 +3,11 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://example.com
+ * @link       placeholder
  * @since      1.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    Woocommerce_Order_Tags
+ * @subpackage Woocommerce_Order_Tags/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @package    Woocommerce_Order_Tags
+ * @subpackage Woocommerce_Order_Tags/includes
+ * @author     Spencer Walden <spencer@chocolab.com.au>
  */
-class Plugin_Name_Loader {
+class Woocommerce_Order_Tags_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

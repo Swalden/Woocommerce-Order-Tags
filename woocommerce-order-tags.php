@@ -8,20 +8,20 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://example.com
+ * @link              placeholder
  * @since             1.0.0
- * @package           Plugin_Name
+ * @package           Woocommerce_Order_Tags
  *
  * @wordpress-plugin
- * Plugin Name:       WordPress Plugin Boilerplate
- * Plugin URI:        http://example.com/plugin-name-uri/
+ * Plugin Name:       Woocommerce Order Tags
+ * Plugin URI:        placeholder
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
- * Author:            Your Name or Your Company
- * Author URI:        http://example.com/
+ * Author:            Spencer Walden
+ * Author URI:        placeholder
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       plugin-name
+ * Text Domain:       woocommerce-order-tags
  * Domain Path:       /languages
  */
 
@@ -39,30 +39,30 @@ define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-name-activator.php
+ * This action is documented in includes/class-woocommerce-order-tags-activator.php
  */
-function activate_plugin_name() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-activator.php';
-	Plugin_Name_Activator::activate();
+function activate_woocommerce_order_tags() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-order-tags-activator.php';
+	Woocommerce_Order_Tags_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
+ * This action is documented in includes/class-woocommerce-order-tags-deactivator.php
  */
-function deactivate_plugin_name() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name-deactivator.php';
-	Plugin_Name_Deactivator::deactivate();
+function deactivate_woocommerce_order_tags() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-order-tags-deactivator.php';
+	Woocommerce_Order_Tags_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_plugin_name' );
-register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
+register_activation_hook( __FILE__, 'activate_woocommerce_order_tags' );
+register_deactivation_hook( __FILE__, 'deactivate_woocommerce_order_tags' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-order-tags.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +73,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
  *
  * @since    1.0.0
  */
-function run_plugin_name() {
+function run_woocommerce_order_tags() {
 
-	$plugin = new Plugin_Name();
+	$plugin = new Woocommerce_Order_Tags();
 	$plugin->run();
 
 }
-run_plugin_name();
+run_woocommerce_order_tags();
