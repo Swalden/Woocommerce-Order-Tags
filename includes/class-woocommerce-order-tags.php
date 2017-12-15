@@ -149,6 +149,19 @@ class Woocommerce_Order_Tags {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'woocommerce_tags_settings_init' );
+		$this->loader->add_action( 'bulk_actions-edit-shop_order', $plugin_admin, 'woocommerce_tags_bulk_menu' );
+		$this->loader->add_action( 'restrict_manage_posts', $plugin_admin, 'woocommerce_tags_order_filters' );
+		$this->loader->add_action( 'pre_get_posts', $plugin_admin, 'woocommerce_tags_apply_order_filters' );
+		$this->loader->add_action( 'manage_shop_order_posts_custom_column', $plugin_admin, 'woocommerce_tags_list_column_content', 10, 2 );
+		$this->loader->add_filter( 'handle_bulk_actions-edit-shop_order', $plugin_admin, 'woocommerce_tags_bulk_action_handler', 10, 3 );
+		$this->loader->add_filter( 'woocommerce_shop_order_search_fields', $plugin_admin,  'woocommerce_tags_platform_search_fields', 10, 1 );
+		$this->loader->add_filter( 'manage_edit-shop_order_columns', $plugin_admin, 'woocommerce_tags_order_column', 12, 1 );
+		$this->loader->add_filter( 'manage_edit-shop_order_columns', $plugin_admin, 'woocommerce_tags_order_column', 12, 1 );
+		$this->loader->add_filter( "manage_edit-shop_order_sortable_columns", $plugin_admin, 'woocommerce_tags_column_sort' );
+		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
+		$this->loader->add_filter( 'plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links' );
 
 	}
 
