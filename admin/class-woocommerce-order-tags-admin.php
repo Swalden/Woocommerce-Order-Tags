@@ -133,7 +133,7 @@ class Woocommerce_Order_Tags_Admin {
 		    echo '<option value>Filter Tags</option>';
 		    foreach($options as $option) {
 		    	foreach($option as $o) {
-			    echo '<option value="' . $o['slug'] . '">' . $o['name'] . '</option>';
+			    echo '<option value="' . $o['name'] . '">' . $o['name'] . '</option>';
 			}
 		  	}
 
@@ -150,7 +150,7 @@ class Woocommerce_Order_Tags_Admin {
 		global $pagenow;
 
 		// Ensure it is an edit.php admin page, the filter exists and has a value, and that it's the products page
-		if ( $query->is_admin && $pagenow == 'edit.php' && isset( $_GET['my_filter'] ) && $_GET['my_filter'] != '' && $_GET['post_type'] == 'shop_order' ) {
+		if ( $query->is_admin && $pagenow == 'edit.php' && isset( $_GET['tags_filter'] ) && $_GET['tags_filter'] != '' && $_GET['post_type'] == 'shop_order' ) {
 
 		  // Create meta query array and add to WP_Query
 		  $meta_key_query = array(
