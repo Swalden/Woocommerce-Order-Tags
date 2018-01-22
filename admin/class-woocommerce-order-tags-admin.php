@@ -73,7 +73,7 @@ class Woocommerce_Order_Tags_Admin {
 	public function woocommerce_tags_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		foreach( $post_ids as $post_id ) {
 			print_c($action);
-			if(strpos($action, 'Remove ') !== false) {
+			if(strpos($action, 'Remove Tag') !== false) {
 				$current_meta = implode(get_post_meta($post_id, 'woocommerce_tag_key'));
 				if(strpos($action, $current_meta) !== false) {
 					delete_post_meta($post_id, 'woocommerce_tag_key');
@@ -84,7 +84,6 @@ class Woocommerce_Order_Tags_Admin {
 			}
 		}
 		return $redirect_to;
-
 	}
 
 	public function woocommerce_tags_order_column( $columns ) {
