@@ -61,10 +61,8 @@ class Woocommerce_Order_Tags_Admin {
 				foreach($option as $o) {
 					$bulk_actions[$o['name']] = __( "Tag ".$o['name'], 'wordpress' );
 				}
-				foreach($option as $o) {
-					$bulk_actions["Remove Tag " . $o['name']] = __( "Remove Tag ".$o['name'], 'wordpress' );
-				}
 			}
+			$bulk_actions["Remove Tags"]= __( "Remove Tags", 'wordpress' );
 		}
 		
 		return $bulk_actions;
@@ -74,13 +72,12 @@ class Woocommerce_Order_Tags_Admin {
 		foreach( $post_ids as $post_id ) {
 			print_c($action);
 			if(strpos($action, 'Remove Tag') !== false) {
-				$current_meta = implode(get_post_meta($post_id, 'woocommerce_order_tags_key'));
-				if(strpos($action, $current_meta) !== false) {
+			
 					delete_post_meta($post_id, 'woocommerce_order_tags_key');
-				}
+				
 			}
-			elseif( ! add_post_meta($post_id, 'woocommerce_order_tags_key', $action, true)) {
-				update_post_meta($post_id, 'woocommerce_order_tags_key', $action);
+			elseif( ! add_post_meta($post_id, 'woocommerce_order_tags_key', $action, true) AND strpos($action, 'Tag') == true) {
+					update_post_meta($post_id, 'woocommerce_order_tags_key', $action);
 			}
 		}
 		return $redirect_to;
