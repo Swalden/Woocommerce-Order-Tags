@@ -48,4 +48,4 @@
 				<button type = "button" onclick = 'newSection()'>Add Tag</button>
 			</div>
 
-			<?php
+			

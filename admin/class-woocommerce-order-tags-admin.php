@@ -74,13 +74,13 @@ class Woocommerce_Order_Tags_Admin {
 		foreach( $post_ids as $post_id ) {
 			print_c($action);
 			if(strpos($action, 'Remove Tag') !== false) {
-				$current_meta = implode(get_post_meta($post_id, 'woocommerce_tag_key'));
+				$current_meta = implode(get_post_meta($post_id, 'woocommerce_order_tags_key'));
 				if(strpos($action, $current_meta) !== false) {
-					delete_post_meta($post_id, 'woocommerce_tag_key');
+					delete_post_meta($post_id, 'woocommerce_order_tags_key');
 				}
 			}
-			elseif( ! add_post_meta($post_id, 'woocommerce_tag_key', $action, true)) {
-				update_post_meta($post_id, 'woocommerce_tag_key', $action);
+			elseif( ! add_post_meta($post_id, 'woocommerce_order_tags_key', $action, true)) {
+				update_post_meta($post_id, 'woocommerce_order_tags_key', $action);
 			}
 		}
 		return $redirect_to;
@@ -97,7 +97,7 @@ class Woocommerce_Order_Tags_Admin {
 	public function woocommerce_tags_list_column_content( $column, $post_id )
 	{
 
-	    $tag = get_post_meta( $post_id, 'woocommerce_tag_key', true );
+	    $tag = get_post_meta( $post_id, 'woocommerce_order_tags_key', true );
 	    if( empty($tag)) $tag = '';
 	    switch ( $column )
 	    {
@@ -109,13 +109,13 @@ class Woocommerce_Order_Tags_Admin {
 
 	public function woocommerce_tags_column_sort( $columns ) {
 		$custom = array(
-			'order_tags'    => 'woocommerce_tag_key'
+			'order_tags'    => 'woocommerce_order_tags_key'
 		);
 		return wp_parse_args( $custom, $columns );
 	}
 
 	public function woocommerce_tags_platform_search_fields( $meta_keys ){
-	    $meta_keys[] = 'woocommerce_tag_key';
+	    $meta_keys[] = 'woocommerce_order_tags_key';
 	    return $meta_keys;
 	}
 
@@ -155,7 +155,7 @@ class Woocommerce_Order_Tags_Admin {
 		  // Create meta query array and add to WP_Query
 		  $meta_key_query = array(
 		    array(
-		      'key'     => 'woocommerce_tag_key',
+		      'key'     => 'woocommerce_order_tags_key',
 		      'value'   => esc_attr( $_GET['tags_filter'] ),
 		    )
 		  );
