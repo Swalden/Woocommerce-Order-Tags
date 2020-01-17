@@ -163,6 +163,7 @@ class Woocommerce_Order_Tags_Admin {
 			echo '<option value>Filter Tags</option>';
 			foreach( $options as $option ) {
 				foreach( $option as $o ) {
+					echo '<option value="Notag">Notag</option>';
 					echo '<option value="' . $o['name'] . '">' . $o['name'] . '</option>';
 				}
 			}
@@ -173,13 +174,12 @@ class Woocommerce_Order_Tags_Admin {
 
 
 	}
-
+	// https://rudrastyh.com/wordpress/meta_query.html#query_meta_values
 	public function woocommerce_tags_apply_order_filters( $query ) {
 		global $pagenow;
 
 		// Ensure it is an edit.php admin page, the filter exists and has a value, and that it's the products page
-		if( $query->is_admin && $pagenow == 'edit.php' && isset( $_GET['tags_filter'] ) && $_GET['tags_filter'] != '' && $_GET['post_type'] == 'shop_order' ) {
-
+		if( $query->is_admin && $pagenow == 'edit.php' && isset( $_GET['tags_filter'] ) && $_GET['tags_filter'] != '' && $_GET['tags_filter'] != 'Notag' && $_GET['post_type'] == 'shop_order' ) {
 			// Create meta query array and add to WP_Query
 			$meta_key_query = array(
 				array(
@@ -188,7 +188,16 @@ class Woocommerce_Order_Tags_Admin {
 				)
 			);
 			$query->set( 'meta_query', $meta_key_query );
-
+		}
+		// If query is No Tag then show all orders with no tag
+		if( $query->is_admin && $pagenow == 'edit.php' && isset( $_GET['tags_filter'] ) && $_GET['tags_filter'] == 'Notag' && $_GET['post_type'] == 'shop_order' ) {
+			$meta_key_query = array(
+				array(
+					'key'   => 'woocommerce_order_tags_key',
+					'compare' => 'NOT EXISTS'
+				)
+			);
+			$query->set( 'meta_query', $meta_key_query );
 		}
 	}
 

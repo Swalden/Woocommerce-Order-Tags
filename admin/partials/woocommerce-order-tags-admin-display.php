@@ -46,7 +46,6 @@
 							<input type='text' name='woocommerce_tags_settings[woocommerce_tags_field][0][name]'>
 							<input type='hidden' name='woocommerce_tags_settings[woocommerce_tags_field][0][slug]'
                                    value='tags-0'>
-
 						</span>
             <button type="button" onclick='removeSection("#tagGroup<?php echo $i; ?>")'>Remove Tag</button>
         </div>
